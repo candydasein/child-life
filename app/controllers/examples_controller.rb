@@ -7,7 +7,9 @@ class ExamplesController < OpenReadController
   # GET /examples.json
   def index
     @examples = Example.all
-
+    #if we wanted to limit to current_user's examples, inherit
+    #from ProtetedCotroller
+    #current_user.example
     render json: @examples
   end
 
@@ -20,8 +22,12 @@ class ExamplesController < OpenReadController
   # POST /examples
   # POST /examples.json
   def create
+    #TOKEN looks up current_user and then we use current_user
+    #to build up our resource
     @example = current_user.examples.build(example_params)
-
+    # -- here, example would have user_id automatically filled in
+    # then you have to explicitly call save
+    #this is what our culr script did 
     if @example.save
       render json: @example, status: :created
     else
