@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :stories, except: %i[new edit]
+  resources :patients, except: %i[new edit]
   resources :specialists, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]

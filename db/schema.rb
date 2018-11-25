@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_011630) do
+ActiveRecord::Schema.define(version: 2018_11_23_225743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,36 @@ ActiveRecord::Schema.define(version: 2018_11_22_011630) do
     t.index ["user_id"], name: "index_examples_on_user_id"
   end
 
+  create_table "patients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "screen_name"
+    t.date "born_on"
+    t.string "sex"
+    t.string "wing"
+    t.string "room_no"
+    t.boolean "online"
+    t.string "condition"
+    t.string "resource_requests"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "specialist_id"
+    t.bigint "story_id"
+    t.index ["specialist_id"], name: "index_patients_on_specialist_id"
+    t.index ["story_id"], name: "index_patients_on_story_id"
+  end
+
   create_table "specialists", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "wing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.string "diagnosis"
+    t.string "story"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,4 +69,6 @@ ActiveRecord::Schema.define(version: 2018_11_22_011630) do
   end
 
   add_foreign_key "examples", "users"
+  add_foreign_key "patients", "specialists"
+  add_foreign_key "patients", "stories"
 end
