@@ -3,4 +3,6 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
+  belongs_to :story, optional: true
+  belongs_to :specialist, optional: true  
 end
