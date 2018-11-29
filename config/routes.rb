@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :stories, except: %i[new edit]
-  resources :patients, except: %i[new edit]
+  resources :users, only: %i[update show index]
   resources :specialists, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]
