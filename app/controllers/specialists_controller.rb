@@ -1,4 +1,4 @@
-class SpecialistsController < ApplicationController
+class SpecialistsController < OpenReadController
   before_action :set_specialist, only: [:show, :update, :destroy]
 
   # GET /specialists
@@ -10,6 +10,8 @@ class SpecialistsController < ApplicationController
 
   # GET /specialists/1
   def show
+    #binding.pry
+    #@specialist 
     render json: @specialist
   end
 
