@@ -4,6 +4,7 @@
 #   before_action :set_user, only: %i[signin show update destroy]
 class UsersController < OpenReadController
   skip_before_action :authenticate, only: %i[signup signin]
+  #before_action :set_user, only: %i[signin show update destroy]
 
   # POST '/sign-up'
   def signup
@@ -20,7 +21,7 @@ class UsersController < OpenReadController
     creds = user_creds
     if (user = User.authenticate creds[:email],
                                  creds[:password])
-      render json: user, serializer: UserSerializer, root: 'user'
+      render json: user, serializer: UserLoginSerializer, root: 'user'
     else
       head :unauthorized
     end
@@ -102,7 +103,7 @@ class UsersController < OpenReadController
 
     def user_creds
       params.require(:credentials)
-            .permit(:email, :password, :password_confirmation)
+            .permit(:email, :password, :password_confirmation, :wing)
     end
   
     def pw_creds
