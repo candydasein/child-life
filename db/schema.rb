@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string "last_name"
     t.date "born_on"
     t.string "sex"
-    t.string "wing"
+    t.string "wing", null: false
     t.string "room_no"
     t.boolean "online"
     t.string "condition"

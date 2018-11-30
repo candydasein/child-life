@@ -10,6 +10,7 @@ class SpecialistsController < ApplicationController
 
   # GET /specialists/1
   def show
+    @specialist
     render json: @specialist
   end
 
@@ -38,7 +39,7 @@ class SpecialistsController < ApplicationController
     @specialist.destroy
   end
 
-  private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_specialist
       @specialist = Specialist.find(params[:id])
