@@ -9,6 +9,11 @@ class UsersController < OpenReadController
   # POST '/sign-up'
   def signup
     user = User.create(user_creds)
+    User.all.each do |user|
+      wing = user.wing
+      specialist_id = Specialist.where(wing: wing)[0].id
+      user.update(specialist_id: specialist_id)
+    end
     if user.valid?
       render json: user, status: :created
     else
