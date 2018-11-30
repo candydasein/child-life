@@ -7,3 +7,5 @@ class UserLoginSerializer < ActiveModel::Serializer
     Rails.application.message_verifier(:signed_token).generate(object.token)
   end
 end
+
+
