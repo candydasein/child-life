@@ -20,6 +20,12 @@ Specialist.create!([
   {first_name: "Michael", last_name: "Siegel", wing: "Neuro", picture: "https://media.licdn.com/dms/image/C5603AQHqKSmOZKWEoQ/profile-displayphoto-shrink_200_200/0?e=1548892800&v=beta&t=kGPBPFi8h1g4tFX1589KLCXcEVvoSU7rkNp_YlWkiB4"},
   {first_name: "Beyonce", last_name: "Knowles", wing: "Ortho", picture: "https://cdn.mpasho.co.ke/wp-content/uploads/2015/04/beyonce.jpeg?x75745"}
 ])
+
+User.all.each do |user|
+  wing = user.wing
+  specialist_id = Specialist.where(wing: wing)[0].id
+  user.update(specialist_id: specialist_id)
+end
 # User.create!([
 #   {email: "suanu@suanu.com", token: "439720fcc8cc4a1a17ae3413fe3afded", password_digest: "$2a$10$1vrF64om5T/.JfdL3ntIqOW0Irdg7VJMMSZycPSxazGanEboo6Tdq", email: nil},
 #   {email: "hi@hi.com", token: "573285c5198c4d79bd7489bc1d8bdb18", password_digest: "$2a$10$gbOo2S5bTByYrUZNpbhyU.eHpjgQkj3lUU6M4zVS7eC6VB4z1WYcG", email: nil},

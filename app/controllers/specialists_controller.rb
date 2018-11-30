@@ -10,8 +10,7 @@ class SpecialistsController < OpenReadController
 
   # GET /specialists/1
   def show
-    #binding.pry
-    #@specialist 
+    @specialist
     render json: @specialist
   end
 
@@ -40,7 +39,7 @@ class SpecialistsController < OpenReadController
     @specialist.destroy
   end
 
-  private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_specialist
       @specialist = Specialist.find(params[:id])

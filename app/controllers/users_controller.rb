@@ -4,10 +4,16 @@
 #   before_action :set_user, only: %i[signin show update destroy]
 class UsersController < OpenReadController
   skip_before_action :authenticate, only: %i[signup signin]
+  #before_action :set_user, only: %i[signin show update destroy]
 
   # POST '/sign-up'
   def signup
     user = User.create(user_creds)
+    User.all.each do |user|
+      wing = user.wing
+      specialist_id = Specialist.where(wing: wing)[0].id
+      user.update(specialist_id: specialist_id)
+    end
     if user.valid?
       render json: user, status: :created
     else
@@ -102,7 +108,7 @@ class UsersController < OpenReadController
 
     def user_creds
       params.require(:credentials)
-            .permit(:email, :password, :password_confirmation)
+            .permit(:email, :password, :password_confirmation, :wing)
     end
   
     def pw_creds
