@@ -1,7 +1,7 @@
 
 # Child Life, v. 1
 
-Child Life is an app that is designed to foster a sense of community among children during hospital stays, and is meant to interface with the office of the hispital's Child Life Specialists in doing so.
+Child Life is an app that is designed to foster a sense of community among children during hospital stays, and is meant to interface with the office of the hispital's Child Life Specialists in doing so
 
 While hospitals go to great lengths to help children feel like children while they are staying in what can feel like an inhospitable, frightening place. However, given the limitations of procedure and treatment schedules, mobility, and suppressed or endangered immunity among patients, there is only so much the Child Life Specialists can do to allow their patients to be with other children. This can be a very lonely experience.
 
